@@ -179,3 +179,7 @@ footer a:hover{color:#fff}
 .acard .vb{color:var(--blue)}.acard .vs{color:var(--red)}
 .acard .vals span{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .acard p{margin:0!important;font-size:15px;line-height:1.4;color:var(--muted)}
+
+/* Gradzeichen: im Fließtext kleiner und mit etwas Abstand */
+.deg{font-size:.72em;position:relative;top:-.12em;margin-left:.03em;margin-right:.1em}
+.stat b .deg,.acard .vals b .deg,.acard .vals span .deg,.price .deg,.results span .deg{font-size:inherit;color:inherit;letter-spacing:inherit;top:0;margin:0}
