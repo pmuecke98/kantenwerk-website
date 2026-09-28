@@ -17,11 +17,19 @@ Statischer One-Pager aus reinem HTML und CSS – kein Framework, kein Build-Schr
 - **Vorschau:** Für jeden Pull Request baut Netlify eine Deploy Preview (Link im Pull Request).
 - **Zurück auf eine alte Version:** Netlify → Deploys → alten Stand anklicken → „Publish deploy“.
 
-## Arbeitsweise
+## Arbeitsweise – alles über Branches
 
-- **Kleine Korrekturen** (Tippfehler, Öffnungszeit): direkt auf `main` im Browser bearbeiten.
-- **Alles Sichtbare** (Design, neue Abschnitte, Fotos): eigener Branch `vorschau/<thema>`, Pull Request,
-  Vorschau prüfen, dann mergen. Ein Branch pro Thema, nach dem Merge löschen.
+**Nie direkt auf `main` ändern.** Jeder Stand auf `main` ist ein Live-Deploy, und die kostet Netlify-Guthaben
+(Free-Tarif: 300 Credits/Monat, 15 Credits pro Live-Deploy ≈ 20 Deploys; Traffic und Formular zählen mit).
+Ist das Guthaben aufgebraucht, **pausiert Netlify die Seite** bis zum nächsten Monat.
+Deploy Previews von Pull Requests kosten nichts.
+
+1. Neuer Branch `vorschau/<thema>` – auch für Tippfehler.
+2. Pull Request öffnen → „Website prüfen“ muss grün sein → Deploy Preview ansehen.
+3. **Mehrere Änderungen sammeln** und gemeinsam mergen: ein Merge = ein Live-Deploy.
+4. Nach dem Merge den Branch löschen.
+
+Guthaben im Blick behalten: Netlify → Team → Usage & billing.
 
 ## Dateien
 
