@@ -45,7 +45,7 @@
     <div class="pill"><i></i>Saison 26/27 · Annahme offen</div>
     <div class="eyebrow">Skiservice Leverkusen</div>
     <h1 class="display"><span class="sr-only">Skiservice in Leverkusen: </span>Schneller durchs Tor.</h1>
-    <ul class="chips" aria-label="Leistungen">
+    <ul class="chips">
       <li>Kantenschliff</li><li>Belagreparatur</li><li>Heißwachs</li><li>Race-Tuning</li>
     </ul>
     <p class="lead">Ski-Service von Hand: Kanten und Belag deiner Ski wieder in Top-Form – vom ehemaligen DSV-Rennläufer aus Leverkusen.</p>
@@ -182,7 +182,7 @@
     <!-- Formular läuft über Netlify Forms (kostenlos bis 100 Anfragen/Monat). Anfragen kommen per Mail. -->
     <form name="anfrage" method="POST" action="danke.html" data-netlify="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="anfrage">
-      <p class="hp" aria-hidden="true"><label>Nicht ausfüllen <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <p class="hp" aria-hidden="true"><label>Nicht ausfüllen <input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label></p>
       <div class="row2">
         <label>Name<input type="text" name="name" autocomplete="name" required></label>
         <label>Telefon oder E-Mail<input type="text" name="kontakt" autocomplete="email" required></label>

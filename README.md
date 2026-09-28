@@ -28,3 +28,16 @@ Namen ändern: "Kantenwerk" in allen Dateien per Suchen & Ersetzen austauschen.
 4. Eigene Domain (.de) bei einem Anbieter kaufen und unter "Domain management" verbinden. HTTPS richtet Netlify automatisch ein.
 
 Änderungen später: Dateien bearbeiten und den Ordner erneut hochladen.
+
+## Automatische Prüfungen
+
+Bei jedem Pull Request prüft GitHub die Seite automatisch (Reiter „Checks“):
+
+- **HTML auf Fehler** (html-validate, Regeln in `.htmlvalidate.json`)
+- **Inhalte** (`tests/check_site.py`): keine sichtbaren Platzhalter wie [JAHR], alle internen Links und Anker
+  funktionieren, FAQ auf der Seite = FAQ in den Google-Daten, Preise auf der Seite = Preise in den Google-Daten,
+  Telefon/E-Mail überall gleich, Impressum mit Pflichtangaben, kein externes Google Fonts, Netlify-Formular
+  korrekt, Sitemap gültig.
+
+Grün = mergen. Rot = die Meldung sagt, was nicht passt.
+Lokal ausführen: `python3 tests/check_site.py`
