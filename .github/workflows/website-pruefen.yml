@@ -1,0 +1,19 @@
+name: Website prüfen
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  pruefen:
+    name: Website prüfen
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: HTML auf Fehler prüfen
+        run: npx --yes html-validate@9 index.html impressum.html datenschutz.html danke.html
+
+      - name: Inhalte prüfen (Platzhalter, Links, Preise, FAQ, Rechtliches)
+        run: python3 tests/check_site.py
