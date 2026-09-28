@@ -168,8 +168,14 @@ footer a:hover{color:#fff}
 .faq summary::after{content:"+";font-family:var(--mono);font-size:28px;color:var(--red);flex:none}
 .faq[open] summary::after{content:"–"}
 .faq p{margin:0 0 24px;max-width:70ch;color:var(--muted)}
-.faq .angles{list-style:none;margin:0 0 20px;padding:0;max-width:760px}
-.faq .angles li{display:grid;grid-template-columns:1fr;gap:2px;padding:12px 0;border-top:1px solid #D5DFEA}
-@media(min-width:700px){.faq .angles li{grid-template-columns:260px 1fr;gap:24px}}
-.faq .angles b{font-weight:600;color:var(--navy)}
-.faq .angles span{font-family:var(--mono);font-size:15px;color:var(--muted)}
+.faq .angles{display:grid;grid-template-columns:1fr;gap:12px;margin:8px 0 24px}
+@media(min-width:520px){.faq .angles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:760px){.faq .angles{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}}
+.acard{background:#fff;border:2px solid var(--navy);padding:16px;display:flex;flex-direction:column;gap:12px}
+.acard h4{margin:0;font-family:var(--display);font-weight:800;font-size:19px;text-transform:uppercase;line-height:1.1}
+.acard .vals{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.acard .vals div{display:flex;flex-direction:column;gap:2px}
+.acard .vals b{font-family:var(--mono);font-weight:700;font-size:clamp(18px,2vw,24px);line-height:1.1;white-space:nowrap}
+.acard .vb{color:var(--blue)}.acard .vs{color:var(--red)}
+.acard .vals span{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.acard p{margin:0!important;font-size:15px;line-height:1.4;color:var(--muted)}
