@@ -36,6 +36,7 @@
         <li><a href="#preise">Preise</a></li>
         <li><a href="#ablauf">Ablauf</a></li>
         <li><a href="#fahrer">Über mich</a></li>
+        <li><a href="#winkel">Winkel-Finder</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
       </ul>
@@ -101,6 +102,35 @@
       <div><span>Hol- &amp; Bringservice Leverkusen</span><b>+5 €</b></div>
     </div>
     <p class="fineprint">Nicht im Angebot: maschineller Steinschliff und Bindungseinstellung – dafür empfehle ich dir gern eine Fachwerkstatt.</p>
+
+    <div class="calc" id="rechner" hidden>
+      <div class="calc-head">
+        <p class="kicker">Preisrechner</p>
+        <h3 class="display calc-title">Was kostet mein Service?</h3>
+      </div>
+      <div class="calc-form" role="group" aria-label="Preisrechner">
+        <label>Service
+          <select id="calc-service">
+            <option value="wachs" data-price="15" data-option="01 · Wachs (15 €)">01 · Wachs – 15 €</option>
+            <option value="kanten" data-price="35" data-option="02 · Kantentuning (35 €)">02 · Kantentuning – 35 €</option>
+            <option value="komplett" data-price="45" data-option="03 · Komplett (45 €)" selected>03 · Komplett – 45 €</option>
+            <option value="race" data-price="65" data-option="04 · Race-Tuning (ab 65 €)" data-ab="1">04 · Race-Tuning – ab 65 €</option>
+          </select>
+        </label>
+        <div class="calc-row">
+          <label>Paar Ski gesamt<input type="number" id="calc-paar" min="1" max="30" value="1" inputmode="numeric"></label>
+          <label>davon Junior (unter 140 cm)<input type="number" id="calc-junior" min="0" max="30" value="0" inputmode="numeric"></label>
+        </div>
+        <label class="consent calc-check"><input type="checkbox" id="calc-hol"><span>Hol- &amp; Bringservice in Leverkusen (+5 € pro Auftrag)</span></label>
+      </div>
+      <div class="calc-result" aria-live="polite">
+        <span class="calc-label">Gesamt</span>
+        <output id="calc-total" class="calc-total">45,00&#8239;€</output>
+        <ul id="calc-lines" class="calc-lines"></ul>
+        <p id="calc-tip" class="calc-tip" hidden></p>
+        <a class="btn btn-red" id="calc-cta" href="#kontakt">So anfragen <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -137,9 +167,60 @@
   </div>
 </section>
 
+<section id="winkel" class="block ice">
+  <div class="wrap">
+    <div class="block-head">
+      <div>
+        <p class="kicker">04 — Winkel-Finder</p>
+        <h2 class="display h2">Welcher Winkel<br>passt zu dir?</h2>
+      </div>
+      <p>Drei Fragen, eine Empfehlung für Belag- und Seitenkante. Unverbindlich – bei der Abgabe sprechen wir sie kurz durch.</p>
+    </div>
+    <div class="finder" id="finder" role="group" aria-label="Winkel-Finder" hidden>
+      <fieldset>
+        <legend><span>1</span>Wie fährst du?</legend>
+        <div class="pills">
+          <label><input type="radio" name="stil" value="0" checked><span>Entspannt &amp; genussvoll</span></label>
+          <label><input type="radio" name="stil" value="2"><span>Sportlich, gern auf der Kante</span></label>
+          <label><input type="radio" name="stil" value="sl"><span>Rennen · Slalom</span></label>
+          <label><input type="radio" name="stil" value="rs"><span>Rennen · Riesenslalom / Speed</span></label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend><span>2</span>Wie sind die Pisten meistens?</legend>
+        <div class="pills">
+          <label><input type="radio" name="schnee" value="0"><span>Weich &amp; griffig</span></label>
+          <label><input type="radio" name="schnee" value="1" checked><span>Gemischt</span></label>
+          <label><input type="radio" name="schnee" value="2"><span>Hart, eisig oder Skihalle</span></label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend><span>3</span>Wie viele Skitage pro Saison?</legend>
+        <div class="pills">
+          <label><input type="radio" name="tage" value="0" checked><span>Bis 7</span></label>
+          <label><input type="radio" name="tage" value="1"><span>8 bis 20</span></label>
+          <label><input type="radio" name="tage" value="2"><span>Mehr als 20</span></label>
+        </div>
+      </fieldset>
+      <div class="finder-result" aria-live="polite">
+        <span class="calc-label">Deine Empfehlung</span>
+        <p id="finder-profil" class="finder-profil">Sportlich &amp; Allround</p>
+        <div class="finder-vals">
+          <div><b id="finder-belag" class="vb">1°</b><span>Belagkante</span></div>
+          <div><b id="finder-seite" class="vs">2°</b><span id="finder-grad">Seitenkante · 88°</span></div>
+        </div>
+        <p id="finder-text" class="finder-text"></p>
+        <p id="finder-tipp" class="finder-text finder-tipp"></p>
+        <a class="btn btn-red" id="finder-cta" href="#kontakt">Mit diesem Winkel anfragen <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <noscript><p>Der Winkel-Finder braucht JavaScript. Die Übersicht der Winkel findest du in den <a href="#faq">häufigen Fragen</a>.</p></noscript>
+  </div>
+</section>
+
 <section id="faq" class="block">
   <div class="wrap">
-    <p class="kicker">04 — Fragen</p>
+    <p class="kicker">05 — Fragen</p>
     <h2 class="display h2">Häufige Fragen zum Skiservice.</h2>
     <div class="faqs">
       <details class="faq"><summary>Was kostet ein Skiservice in Leverkusen bei Kantenwerk?</summary><p>Wachs kostet 15 €, Kantentuning 35 € (inkl. Wachs), der Komplett-Service mit Belagreparatur, Kanten und Heißwachs 45 € und Race-Tuning ab 65 € je Paar. Junior-Ski unter 140 cm sind 30&nbsp;% günstiger.</p></details>
@@ -221,6 +302,112 @@
     </nav>
   </div>
 </footer>
+<script>
+(function () {
+  var form = {
+    service: document.querySelector('select[name="service"]'),
+    paar: document.querySelector('input[name="paar"]'),
+    nachricht: document.querySelector('textarea[name="nachricht"]')
+  };
+  var euro = function (n) { return n.toFixed(2).replace('.', ',') + '\u202f€'; };
+  function prefill(option, paar, text) {
+    if (option && form.service) form.service.value = option;
+    if (paar && form.paar) form.paar.value = paar;
+    if (text && form.nachricht) {
+      form.nachricht.value = form.nachricht.value.trim() ? form.nachricht.value.trim() + '\n' + text : text;
+    }
+  }
+
+  /* ===== Preisrechner ===== */
+  var calc = document.getElementById('rechner');
+  if (calc) {
+    calc.hidden = false;
+    var sel = document.getElementById('calc-service'), paar = document.getElementById('calc-paar'),
+        junior = document.getElementById('calc-junior'), hol = document.getElementById('calc-hol'),
+        total = document.getElementById('calc-total'), lines = document.getElementById('calc-lines'),
+        tip = document.getElementById('calc-tip'), cta = document.getElementById('calc-cta');
+    var JUNIOR = 0.7, HOL = 5;
+    var state = {};
+    function clamp(el, min, max) {
+      var v = parseInt(el.value, 10); if (isNaN(v)) v = min;
+      v = Math.max(min, Math.min(max, v)); return v;
+    }
+    function update() {
+      var o = sel.options[sel.selectedIndex], price = parseFloat(o.dataset.price), ab = !!o.dataset.ab;
+      var p = clamp(paar, 1, 30), j = Math.min(clamp(junior, 0, 30), p), e = p - j;
+      junior.max = p;
+      var sum = e * price + j * price * JUNIOR + (hol.checked ? HOL : 0);
+      total.textContent = (ab ? 'ab ' : '') + euro(sum);
+      var rows = [];
+      if (e) rows.push(e + ' × Erwachsen à ' + euro(price) + ' = ' + euro(e * price));
+      if (j) rows.push(j + ' × Junior à ' + euro(price * JUNIOR) + ' = ' + euro(j * price * JUNIOR));
+      if (hol.checked) rows.push('Hol- & Bringservice = ' + euro(HOL));
+      lines.innerHTML = '';
+      rows.forEach(function (t) { var li = document.createElement('li'); li.textContent = t; lines.appendChild(li); });
+      var showTip = o.value === 'komplett' && e >= 1 && p === 1;
+      tip.hidden = !showTip;
+      if (showTip) tip.textContent = 'Tipp: Fährst du öfter? Das Saisonpaket mit 3× Komplett kostet 120 € statt 135 €.';
+      state = { option: o.dataset.option, paar: p,
+        text: 'Preisrechner: ' + p + ' Paar' + (j ? ' (davon ' + j + ' Junior)' : '') +
+              (hol.checked ? ', mit Hol- & Bringservice' : '') + ' – ' + total.textContent };
+    }
+    [sel, paar, junior, hol].forEach(function (el) { el.addEventListener('input', update); el.addEventListener('change', update); });
+    cta.addEventListener('click', function () { prefill(state.option, state.paar, state.text); });
+    update();
+  }
+
+  /* ===== Winkel-Finder (Werte wie in der FAQ) ===== */
+  var finder = document.getElementById('finder');
+  if (finder) {
+    finder.hidden = false;
+    var PROFILE = {
+      einsteiger: { name: 'Einsteiger & Genussfahrer', belag: '1°', seite: '1°', grad: '89°',
+        text: 'Der Ski dreht leicht an und verzeiht Fehler. Die Kante hält lange, weil kaum Material abgetragen wird.' },
+      allround: { name: 'Sportlich & Allround', belag: '1°', seite: '2°', grad: '88°',
+        text: 'Der gute Mittelweg: spürbar mehr Grip in der Kurve, trotzdem gutmütig und haltbar.' },
+      carver: { name: 'Ambitionierte Carver', belag: '0,5–0,7°', seite: '3°', grad: '87°',
+        text: 'Viel Biss auf harter und eisiger Piste. Der Ski reagiert direkter – genau richtig, wenn du sauber auf der Kante fährst.' },
+      slalom: { name: 'Slalom', belag: '0,5°', seite: '3–4°', grad: '87–86°',
+        text: 'Maximal direkt und bissig für kurze Radien. Diese Winkel brauchen regelmäßige Pflege.' },
+      rs: { name: 'Riesenslalom & Speed', belag: '0,5–1°', seite: '2–3°', grad: '88–87°',
+        text: 'Stabil bei hohem Tempo und langen Schwüngen, ohne zu früh zu greifen.' }
+    };
+    var out = {
+      profil: document.getElementById('finder-profil'), belag: document.getElementById('finder-belag'),
+      seite: document.getElementById('finder-seite'), grad: document.getElementById('finder-grad'),
+      text: document.getElementById('finder-text'), tipp: document.getElementById('finder-tipp'),
+      cta: document.getElementById('finder-cta')
+    };
+    var current;
+    function val(name) { var r = finder.querySelector('input[name="' + name + '"]:checked'); return r ? r.value : '0'; }
+    function evaluate() {
+      var stil = val('stil'), schnee = +val('schnee'), tage = +val('tage'), key;
+      if (stil === 'sl') key = 'slalom';
+      else if (stil === 'rs') key = 'rs';
+      else {
+        var score = +stil + schnee + Math.min(tage, 1);
+        key = score <= 1 ? 'einsteiger' : score <= 3 ? 'allround' : 'carver';
+      }
+      current = PROFILE[key];
+      out.profil.textContent = current.name;
+      out.belag.textContent = current.belag;
+      out.seite.textContent = current.seite;
+      out.grad.textContent = 'Seitenkante · ' + current.grad;
+      out.text.textContent = current.text;
+      out.tipp.textContent = tage === 2 || key === 'slalom' || key === 'rs'
+        ? 'Bei so vielen Skitagen: Kanten etwa alle 5–7 Tage nachschleifen lassen – das Saisonpaket (3× Komplett, 120 €) lohnt sich.'
+        : tage === 1 ? 'Pflege-Tipp: einmal vor der Saison Komplett, zur Saisonmitte Kanten nachschärfen.'
+        : 'Pflege-Tipp: ein Komplett-Service vor dem Urlaub reicht meist für die ganze Saison.';
+    }
+    finder.addEventListener('change', evaluate);
+    out.cta.addEventListener('click', function () {
+      prefill('02 · Kantentuning (35 €)', null,
+        'Winkel-Finder: ' + current.name + ' – Belag ' + current.belag + ', Seite ' + current.seite + ' (' + current.grad + ')');
+    });
+    evaluate();
+  }
+})();
+</script>
 <script>
 /* Startnummer-Karte angeklickt: passenden Service im Formular vorauswählen */
 document.querySelectorAll('[data-service]').forEach(function (link) {

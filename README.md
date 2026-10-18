@@ -48,10 +48,13 @@ Guthaben im Blick behalten: Netlify → Team → Usage & billing.
 
 ## Häufige Änderungen – worauf achten
 
-**Preise ändern** – an drei Stellen in `index.html` (plus `data-service` der Karten, falls sich der Formular-Eintrag ändert):
+**Preise ändern** – an vier Stellen in `index.html` (plus `data-service`/`data-option`, falls sich der Formular-Eintrag ändert):
 1. Startnummern-Karten im Abschnitt `#preise`
 2. FAQ-Antwort „Was kostet ein Skiservice…“ (sichtbar **und** im Block `FAQPage` oben im `<head>`)
 3. `hasOfferCatalog` im Block `LocalBusiness` oben im `<head>`
+4. Preisrechner: `data-price` der Optionen in `#rechner` (Junior-Faktor 0,7 und Hol- & Bringservice 5 € stehen im Script unten)
+
+**Kantenwinkel ändern** – FAQ (sichtbar + `FAQPage`) und `PROFILE` im Winkel-Finder-Script unten in `index.html`. Der Test prüft, dass beide übereinstimmen.
 
 **FAQ ändern** – jede Frage steht zweimal: sichtbar im Abschnitt `#faq` und im Block `FAQPage` im `<head>`
 (für Google). Beide Stellen gleich halten, sonst schlägt der Test fehl.
@@ -74,7 +77,8 @@ Bei jedem Pull Request und jedem Stand auf `main` prüft GitHub die Seite (Reite
   - keine sichtbaren Platzhalter wie `[JAHR]` oder TODO
   - alle internen Links und Sprungmarken funktionieren, Bilder haben `alt`-Text
   - FAQ auf der Seite = FAQ in den Google-Daten
-  - Preise auf der Seite = Preise in den Google-Daten
+  - Preise auf der Seite = Preise in den Google-Daten = Preise im Preisrechner
+  - Winkel im Winkel-Finder = Winkel in der FAQ
   - Telefon, E-Mail und WhatsApp-Link überall gleich
   - Impressum mit Pflichtangaben, § 19-UStG-Hinweis, Rechtsseiten auf `noindex`
   - keine extern geladenen Google Fonts

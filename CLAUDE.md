@@ -28,7 +28,8 @@ printf '#!/bin/sh\nwhile read l ls r rs; do [ "$r" = "refs/heads/main" ] && echo
 ## Inhaltliche Fallen
 
 - FAQ steht doppelt: sichtbar in `#faq` und im JSON-LD-Block `FAQPage` – immer beide ändern.
-- Preise stehen dreifach: Karten in `#preise`, FAQ, `LocalBusiness.hasOfferCatalog`.
+- Preise stehen vierfach: Karten in `#preise`, FAQ, `LocalBusiness.hasOfferCatalog`, Preisrechner (`data-price`).
+- Kantenwinkel stehen in FAQ (sichtbar + JSON-LD) und im Winkel-Finder (`PROFILE` im Script) – Test vergleicht sie.
 - Kontaktdaten: `index.html`, `impressum.html`, `datenschutz.html`, `LocalBusiness`.
 - Keine externen Ressourcen (Google Fonts, Tracking, Cookies) – Schriften liegen in `fonts/`.
 - Startnummer-Karten wählen per `data-service` den Service im Formular vor – der Wert muss exakt einem `<option>` entsprechen.

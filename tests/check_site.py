@@ -161,6 +161,24 @@ if biz:
         if not re.search(rf"\b{re.escape(price)}\s?€", text):
             fail(f"Preis {price} € ({name}) aus den Google-Daten steht nicht auf der Seite")
 
+# 6b) Preisrechner rechnet mit denselben Preisen; Karten/Rechner verweisen auf echte Formular-Optionen
+calc_prices = dict(re.findall(r'data-price="(\d+)" data-option="([^"]+)"', index_src))
+if biz and calc_prices:
+    if sorted(calc_prices) != sorted(o["price"] for o in biz["hasOfferCatalog"]["itemListElement"]):
+        fail(f"Preisrechner-Preise {sorted(calc_prices)} passen nicht zu den Google-Daten")
+options = set(re.findall(r"<option>([^<]+)</option>", index_src))
+for opt in set(re.findall(r'data-(?:service|option)="([^"]+)"', index_src)):
+    if opt not in options:
+        fail(f"Vorauswahl „{opt}“ gibt es im Kontaktformular nicht als Option")
+
+# 6c) Winkel-Finder nutzt dieselben Winkel wie die FAQ
+finder_vals = re.findall(r"(?:belag|seite|grad): '([^']+)'", index_src)
+if finder_vals and faq:
+    faq_angles = next((e["acceptedAnswer"]["text"] for e in faq["mainEntity"] if "Kantenwinkel gibt es" in e["name"]), "")
+    for v in finder_vals:
+        if v.replace("°", "") not in faq_angles.replace("°", ""):
+            fail(f"Winkel-Finder: Wert {v} steht nicht in der FAQ-Antwort zu den Kantenwinkeln")
+
 # 7) Kontaktdaten überall gleich
 for page in ("index.html", "impressum.html"):
     t = visible_text(parsed[page][0])
