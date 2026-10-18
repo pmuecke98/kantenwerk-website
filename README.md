@@ -38,6 +38,7 @@ Guthaben im Blick behalten: Netlify → Team → Usage & billing.
 | `index.html` | Die Startseite: Hero, Preise, Ablauf, Über mich, FAQ, Kontaktformular |
 | `impressum.html`, `datenschutz.html` | Rechtstexte (Datenschutz erstellt mit datenschutz-generator.de, ergänzt um Netlify und WhatsApp) |
 | `danke.html` | Erscheint nach dem Absenden des Formulars |
+| `404.html` | Eigene Fehlerseite „Tor verpasst.“ (Netlify zeigt sie automatisch; nutzt absolute Pfade `/style.css`) |
 | `style.css` | Design; Farben und Schriften ganz oben unter `:root` |
 | `fonts/` | Schriften lokal eingebunden (keine Verbindung zu Google, DSGVO-freundlich) |
 | `favicon.svg`, `og-image.png` | Browser-Icon und Vorschaubild beim Teilen des Links |
@@ -47,7 +48,7 @@ Guthaben im Blick behalten: Netlify → Team → Usage & billing.
 
 ## Häufige Änderungen – worauf achten
 
-**Preise ändern** – an drei Stellen in `index.html`:
+**Preise ändern** – an drei Stellen in `index.html` (plus `data-service` der Karten, falls sich der Formular-Eintrag ändert):
 1. Startnummern-Karten im Abschnitt `#preise`
 2. FAQ-Antwort „Was kostet ein Skiservice…“ (sichtbar **und** im Block `FAQPage` oben im `<head>`)
 3. `hasOfferCatalog` im Block `LocalBusiness` oben im `<head>`
@@ -85,7 +86,7 @@ Lokal ausführen:
 
 ```bash
 python3 tests/check_site.py
-npx html-validate index.html impressum.html datenschutz.html danke.html
+npx html-validate index.html impressum.html datenschutz.html danke.html 404.html
 ```
 
 ## Formular

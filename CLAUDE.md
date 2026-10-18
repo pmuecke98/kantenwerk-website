@@ -22,7 +22,7 @@ printf '#!/bin/sh\nwhile read l ls r rs; do [ "$r" = "refs/heads/main" ] && echo
 ## Vor jedem Push
 
 - `python3 tests/check_site.py` muss grün sein.
-- `npx html-validate index.html impressum.html datenschutz.html danke.html` muss grün sein.
+- `npx html-validate index.html impressum.html datenschutz.html danke.html 404.html` muss grün sein.
 - Sichtbare Änderungen per Screenshot (Desktop 1440 px und Handy 390 px) prüfen.
 
 ## Inhaltliche Fallen
@@ -31,4 +31,6 @@ printf '#!/bin/sh\nwhile read l ls r rs; do [ "$r" = "refs/heads/main" ] && echo
 - Preise stehen dreifach: Karten in `#preise`, FAQ, `LocalBusiness.hasOfferCatalog`.
 - Kontaktdaten: `index.html`, `impressum.html`, `datenschutz.html`, `LocalBusiness`.
 - Keine externen Ressourcen (Google Fonts, Tracking, Cookies) – Schriften liegen in `fonts/`.
+- Startnummer-Karten wählen per `data-service` den Service im Formular vor – der Wert muss exakt einem `<option>` entsprechen.
+- Design-Prüfungen nach dem Redesign-Skill; bewusste Abweichungen: zwei Akzentfarben (Rot/Blau = Torstangen), dunkle Start/Ziel-Abschnitte, aufklappbare FAQ.
 - Rechtliche Aussagen (Haftung, Widerruf) nicht verschärfen ohne Hinweis auf rechtliche Prüfung.

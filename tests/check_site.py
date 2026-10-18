@@ -13,7 +13,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-PAGES = ["index.html", "impressum.html", "datenschutz.html", "danke.html"]
+PAGES = ["index.html", "impressum.html", "datenschutz.html", "danke.html", "404.html"]
 PHONE = "01515 8327587"
 PHONE_INTL = "4915158327587"
 EMAIL = "kantenwerk@gmail.com"
@@ -102,7 +102,8 @@ for page, (src, c) in parsed.items():
         if link.startswith(("http://", "https://", "mailto:", "tel:", "data:")):
             continue
         path, _, anchor = link.partition("#")
-        target = page if path == "" else path
+        path = path.lstrip("/")  # 404.html nutzt absolute Pfade
+        target = page if path == "" and not link.startswith("/") else (path or "index.html")
         if not (ROOT / target).exists():
             fail(f"{page}: Link auf fehlende Datei {link}")
         elif anchor and target in parsed and anchor not in parsed[target][1].ids:
@@ -177,11 +178,11 @@ for must in ("§ 5 DDG", "§ 19 UStG", "Leverkusen"):
         fail(f"impressum.html: „{must}“ fehlt")
 if "§ 19 UStG" not in visible_text(index_src):
     fail("index.html: Hinweis § 19 UStG bei den Preisen fehlt")
-for page in ("impressum.html", "datenschutz.html", "danke.html"):
+for page in ("impressum.html", "datenschutz.html", "danke.html", "404.html"):
     if 'name="robots" content="noindex"' not in parsed[page][0]:
         fail(f"{page}: sollte noindex haben")
 for page in PAGES:
-    if not re.search(r'href="[^"]*impressum\.html"', parsed[page][0]) and page not in ("impressum.html", "danke.html"):
+    if not re.search(r'href="[^"]*impressum\.html"', parsed[page][0]) and page not in ("impressum.html", "danke.html", "404.html"):
         fail(f"{page}: Link zum Impressum fehlt")
 if "fonts.googleapis" in "".join(s for s, _ in parsed.values()):
     fail("Google Fonts werden extern geladen (Datenschutz!) – Schriften lokal einbinden")
