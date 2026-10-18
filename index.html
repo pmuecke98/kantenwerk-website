@@ -336,6 +336,7 @@
       var o = sel.options[sel.selectedIndex], price = parseFloat(o.dataset.price), ab = !!o.dataset.ab;
       var p = clamp(paar, 1, 30), j = Math.min(clamp(junior, 0, 30), p), e = p - j;
       junior.max = p;
+      if (junior.value !== '' && +junior.value > p) junior.value = j;
       var sum = e * price + j * price * JUNIOR + (hol.checked ? HOL : 0);
       total.textContent = (ab ? 'ab ' : '') + euro(sum);
       var rows = [];
@@ -352,6 +353,10 @@
               (hol.checked ? ', mit Hol- & Bringservice' : '') + ' – ' + total.textContent };
     }
     [sel, paar, junior, hol].forEach(function (el) { el.addEventListener('input', update); el.addEventListener('change', update); });
+    [paar, junior].forEach(function (el) { el.addEventListener('change', function () {
+      var lo = el === paar ? 1 : 0, hi = el === paar ? 30 : (+junior.max || 30);
+      el.value = Math.min(Math.max(parseInt(el.value, 10) || lo, lo), hi); update();
+    }); });
     cta.addEventListener('click', function () { prefill(state.option, state.paar, state.text); });
     update();
   }
