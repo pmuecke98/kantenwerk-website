@@ -93,7 +93,7 @@ section{scroll-margin-top:72px}
 .bibs{display:grid;gap:20px;grid-template-columns:1fr}
 @media (min-width:640px){.bibs{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (min-width:1100px){.bibs{grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}}
-.bib{background:#fff;border:2px solid var(--navy);display:flex;flex-direction:column}
+.bib{position:relative;background:#fff;border:2px solid var(--navy);display:flex;flex-direction:column;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
 .bib-top{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;color:#fff;background:var(--blue)}
 .bib:nth-child(even) .bib-top{background:var(--red)}
 .bib-top span{font-family:var(--mono);font-size:12px;letter-spacing:.1em}
@@ -229,3 +229,29 @@ label:has(:user-invalid) .field-hint{display:block}
   html{scroll-behavior:auto}
   *,*::before,*::after{transition:none!important;animation:none!important}
 }
+
+/* ===== Hover-Effekte (nur auf Geräten mit Maus/Trackpad) ===== */
+.arrow{display:inline-block;margin-left:.35em;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.btn{position:relative;overflow:hidden;isolation:isolate}
+.btn::after{content:"";position:absolute;inset:-2px auto -2px -40%;width:30%;z-index:-1;background:rgba(255,255,255,.18);transform:skewX(-20deg) translateX(-120%);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.bib-cta{display:inline-flex;align-items:center;min-height:44px;margin-top:4px;font-weight:600;font-size:15px;color:var(--blue);text-decoration:none}
+.bib-cta::before{content:"";position:absolute;inset:0;z-index:1}
+.bib.dark .bib-cta{color:#8FC1FF}
+.bib-top strong{transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.nav ul a{position:relative}
+.nav ul a::after,footer nav a::after,.topbar .back::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+footer nav a,.topbar .back{position:relative}
+.channels svg{transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.faq summary::after{transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+@media (hover:hover){
+  .btn:hover::after{transform:skewX(-20deg) translateX(560%)}
+  .btn:hover .arrow,.bib:hover .arrow,.bib-cta:focus-visible .arrow{transform:translateX(6px)}
+  .bib:hover{transform:translateY(-6px);box-shadow:0 14px 0 -4px rgba(11,31,58,.14),0 22px 40px -18px rgba(11,31,58,.45)}
+  .bib:hover .bib-top strong{transform:translateX(-4px) scale(1.06)}
+  .bib:hover .bib-cta{text-decoration:underline;text-underline-offset:4px}
+  .nav ul a:hover::after,footer nav a:hover::after,.topbar .back:hover::after{transform:scaleX(1)}
+  .channels a:hover svg{transform:translateX(3px)}
+  .faq:not([open]) summary:hover::after{transform:rotate(90deg)}
+}
+.bib:focus-within{outline:3px solid var(--navy);outline-offset:4px}
+.bib-cta:focus-visible{outline:none}

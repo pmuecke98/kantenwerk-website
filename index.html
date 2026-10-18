@@ -51,7 +51,7 @@
     </ul>
     <p class="lead">Ski-Service von Hand: Kanten und Belag deiner Ski wieder in Top-Form – vom ehemaligen DSV&#8209;Rennläufer aus Leverkusen.</p>
     <div class="cta-row">
-      <a class="btn btn-red" href="#kontakt">Ski abgeben →</a>
+      <a class="btn btn-red" href="#kontakt">Ski abgeben <span class="arrow" aria-hidden="true">→</span></a>
       <small>ab 15 € · fertig in 3–5 Werktagen</small>
     </div>
   </div>
@@ -80,19 +80,19 @@
     <div class="bibs">
       <article class="bib">
         <div class="bib-top"><span>STARTNR.</span><strong>01</strong></div>
-        <div class="bib-body"><h3>Wachs</h3><p>Belag reinigen, Heißwachs einbügeln, abziehen, strukturbürsten.</p><div class="price">15 €</div></div>
+        <div class="bib-body"><h3>Wachs</h3><p>Belag reinigen, Heißwachs einbügeln, abziehen, strukturbürsten.</p><div class="price">15&#8239;€</div><a class="bib-cta" href="#kontakt" data-service="01 · Wachs (15 €)">Wachs anfragen <span class="arrow" aria-hidden="true">→</span></a></div>
       </article>
       <article class="bib">
         <div class="bib-top"><span>STARTNR.</span><strong>02</strong></div>
-        <div class="bib-body"><h3>Kantentuning</h3><p>Seiten- und Belagkante auf deinen Wunschwinkel, entgraten, Diamant-Finish. Inklusive Wachs.</p><div class="price">35 €</div></div>
+        <div class="bib-body"><h3>Kantentuning</h3><p>Seiten- und Belagkante auf deinen Wunschwinkel, entgraten, Diamant-Finish. Inklusive Wachs.</p><div class="price">35&#8239;€</div><a class="bib-cta" href="#kontakt" data-service="02 · Kantentuning (35 €)">Kantentuning anfragen <span class="arrow" aria-hidden="true">→</span></a></div>
       </article>
       <article class="bib dark">
         <div class="bib-top"><span>STARTNR. · TOP</span><strong>03</strong></div>
-        <div class="bib-body"><h3>Komplett</h3><p>Kleine Belagschäden auffüllen, Kantentuning, Heißwachs. Das Rundum-Paket vor dem Urlaub.</p><div class="price">45 €</div></div>
+        <div class="bib-body"><h3>Komplett</h3><p>Kleine Belagschäden auffüllen, Kantentuning, Heißwachs. Das Rundum-Paket vor dem Urlaub.</p><div class="price">45&#8239;€</div><a class="bib-cta" href="#kontakt" data-service="03 · Komplett (45 €)">Komplett-Service anfragen <span class="arrow" aria-hidden="true">→</span></a></div>
       </article>
       <article class="bib">
         <div class="bib-top"><span>STARTNR. · RACE</span><strong>04</strong></div>
-        <div class="bib-body"><h3>Race-Tuning</h3><p>Präzisionswinkel, Diamant bis Feinstkörnung, mehrfaches Wachsen mit Race-Wax.</p><div class="price">ab 65 €</div></div>
+        <div class="bib-body"><h3>Race-Tuning</h3><p>Präzisionswinkel, Diamant bis Feinstkörnung, mehrfaches Wachsen mit Race-Wax.</p><div class="price">ab 65&#8239;€</div><a class="bib-cta" href="#kontakt" data-service="04 · Race-Tuning (ab 65 €)">Race-Tuning anfragen <span class="arrow" aria-hidden="true">→</span></a></div>
       </article>
     </div>
     <div class="extras">
@@ -203,7 +203,7 @@
       </div>
       <label>Nachricht<textarea name="nachricht" placeholder="Wunschtermin, Winkel, Hol- & Bringservice?"></textarea></label>
       <label class="consent"><input type="checkbox" name="datenschutz" required><span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage gespeichert werden. Mehr in der <a href="datenschutz.html">Datenschutzerklärung</a>.</span></label>
-      <button class="btn btn-navy" type="submit">Anfrage senden →</button>
+      <button class="btn btn-navy" type="submit">Anfrage senden <span class="arrow" aria-hidden="true">→</span></button>
       <p class="formnote">Die Anfrage ist unverbindlich. Den Auftrag besprechen wir bei der Abgabe deiner Ski.</p>
     </form>
   </div>
@@ -221,5 +221,14 @@
     </nav>
   </div>
 </footer>
+<script>
+/* Startnummer-Karte angeklickt: passenden Service im Formular vorauswählen */
+document.querySelectorAll('[data-service]').forEach(function (link) {
+  link.addEventListener('click', function () {
+    var select = document.querySelector('select[name="service"]');
+    if (select) select.value = link.dataset.service;
+  });
+});
+</script>
 </body>
 </html>
